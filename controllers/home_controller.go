@@ -1,9 +1,8 @@
 package controllers
 
 import (
-	"net/http"
-
 	"github.com/gin-gonic/gin"
+	"net/http"
 )
 
 var GetHome = func(c *gin.Context) {

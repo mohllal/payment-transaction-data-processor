@@ -2,7 +2,6 @@ package routers
 
 import (
 	"code-challange/controllers"
-
 	"github.com/gin-gonic/gin"
 )
 
