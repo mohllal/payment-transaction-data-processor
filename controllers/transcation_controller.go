@@ -2,22 +2,27 @@ package controllers
 
 import (
 	"code-challange/data"
-	"fmt"
-	"github.com/gin-gonic/gin"
 	"net/http"
+
+	"github.com/gin-gonic/gin"
 )
 
-var flyATranscations = data.LoadFlyATranscations()
-var flyBTranscations = data.LoadFlyBTranscations()
+var allTranscations = data.LoadAllTranscations()
 
 var GetTranscations = func(c *gin.Context) {
-	provider := c.Query("provider")
+	// provider := c.Query("provider")
+	// statusCode := c.Query("statusCode")
+	// amountMin := c.Query("amountMin")
+	// amountMax := c.Query("amountMax")
+	// currency := c.Query("currency")
 
-	fmt.Println(flyATranscations.Transcations[0])
-	fmt.Println(flyBTranscations.Transcations[0])
+	// query := c.Request.URL.Query()
+	// fmt.Println(query)
 
-	message := fmt.Sprintf("Hello from %s provider", provider)
+	// fmt.Println(flyATranscations.Transcations[0])
+	// fmt.Println(flyBTranscations.Transcations[0])
+
 	c.JSON(http.StatusOK, gin.H{
-		"message": message,
+		"result": allTranscations,
 	})
 }

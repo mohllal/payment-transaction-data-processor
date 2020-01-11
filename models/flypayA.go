@@ -11,3 +11,13 @@ type FlaypayATranscation struct {
 	OrderReference string `json:"orderReference"`
 	TransactionId  string `json:"transactionId"`
 }
+
+var FlypayAStatusCodeMapping = map[int]string{
+	1: "authorised",
+	2: "decline",
+	3: "refunded",
+}
+
+func (transcation FlaypayATranscation) TranscationObject() {
+	// no-op marker method
+}
