@@ -1,7 +1,7 @@
 package main
 
 import (
-	router "github.com/Mohllal/go-challange/routers"
+	router "github.com/Mohllal/go-challenge/routers"
 
 	"github.com/gin-gonic/gin"
 )

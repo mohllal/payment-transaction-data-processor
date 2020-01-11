@@ -2,7 +2,7 @@ FROM golang:1.13
 
 LABEL maintainer="Kareem Khaled <kareem.mohllal@gmail.com>"
 LABEL version="1.0"
-LABEL project="go-challange"
+LABEL project="go-challenge"
 
 WORKDIR /app
 

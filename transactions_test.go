@@ -2,9 +2,9 @@ package main
 
 import (
 	"encoding/json"
-	"github.com/Mohllal/go-challange/data"
-	"github.com/Mohllal/go-challange/models"
-	"github.com/Mohllal/go-challange/utils"
+	"github.com/Mohllal/go-challenge/data"
+	"github.com/Mohllal/go-challenge/models"
+	"github.com/Mohllal/go-challenge/utils"
 	"github.com/gin-gonic/gin"
 	"github.com/stretchr/testify/assert"
 	"net/http"

@@ -1,7 +1,7 @@
 package controllers
 
 import (
-	"github.com/Mohllal/go-challange/data"
+	"github.com/Mohllal/go-challenge/data"
 	"net/http"
 	"strconv"
 

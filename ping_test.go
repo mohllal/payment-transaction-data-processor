@@ -2,7 +2,7 @@ package main
 
 import (
 	"encoding/json"
-	"github.com/Mohllal/go-challange/utils"
+	"github.com/Mohllal/go-challenge/utils"
 	"github.com/gin-gonic/gin"
 	"github.com/stretchr/testify/assert"
 	"net/http"

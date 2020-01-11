@@ -1,6 +1,6 @@
 package utils
 
-import "github.com/Mohllal/go-challange/models"
+import "github.com/Mohllal/go-challenge/models"
 
 var GenerateFakeTransactionsByCriteria = func(criteria string) []models.Transaction {
 	transactions := make([]models.Transaction, 0)
