@@ -7,6 +7,12 @@ var GenerateFakeTransactionsByCriteria = func(criteria string) []models.Transact
 
 	if criteria == "provider" {
 		transactions = generateFakeTransactionsWithTheSameProvider()
+	} else if criteria == "status" {
+		transactions = generateFakeTransactionsWithTheSameStatus()
+	} else if criteria == "currency" {
+		transactions = generateFakeTransactionsWithTheSameCurrency()
+	} else if criteria == "amount" {
+		transactions = generateFakeTransactionsWithinTheSameAmount()
 	}
 
 	return transactions
@@ -16,6 +22,33 @@ var GenerateFakeTransactionsByCriteria = func(criteria string) []models.Transact
 var generateFakeTransactionsWithTheSameProvider = func() []models.Transaction {
 	fake1 := generateFakeTranscation(100, "EGP", "authorised", "2e58bd43-7abb", "4dc2-a8a1")
 	fake2 := generateFakeTranscation(500, "US", "decline", "2e58uim3-7op", "4dc2-ui9o")
+
+	transactions := []models.Transaction{fake1, fake2}
+	return transactions
+}
+
+// generate fake transactions with the same status
+var generateFakeTransactionsWithTheSameStatus = func() []models.Transaction {
+	fake1 := generateFakeTranscation(100, "EGP", "authorised", "2e58bd43-7abb", "4dc2-a8a1")
+	fake2 := generateFakeTranscation(500, "US", "authorised", "2e58uim3-7op", "4dc2-ui9o")
+
+	transactions := []models.Transaction{fake1, fake2}
+	return transactions
+}
+
+// generate fake transactions with the same currency
+var generateFakeTransactionsWithTheSameCurrency = func() []models.Transaction {
+	fake1 := generateFakeTranscation(100, "EGP", "authorised", "2e58bd43-7abb", "4dc2-a8a1")
+	fake2 := generateFakeTranscation(500, "EGP", "decline", "2e58uim3-7op", "4dc2-ui9o")
+
+	transactions := []models.Transaction{fake1, fake2}
+	return transactions
+}
+
+// generate fake transactions within the same amount
+var generateFakeTransactionsWithinTheSameAmount = func() []models.Transaction {
+	fake1 := generateFakeTranscation(100, "EGP", "authorised", "2e58bd43-7abb", "4dc2-a8a1")
+	fake2 := generateFakeTranscation(200, "US", "decline", "2e58uim3-7op", "4dc2-ui9o")
 
 	transactions := []models.Transaction{fake1, fake2}
 	return transactions
