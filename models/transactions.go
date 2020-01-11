@@ -1,6 +1,6 @@
 package models
 
-type TransactionsObject interface {
+type Transactions interface {
 	GetTrasncations() []Transaction
-	Load() TransactionsObject
+	Load() Transactions
 }

@@ -5,8 +5,8 @@ import (
 )
 
 var LoadAllTransactions = func() []models.Transaction {
-	var flyATransactions = models.TransactionsObject.Load(models.FlypayATransactions{})
-	var flyBTransactions = models.TransactionsObject.Load(models.FlypayBTransactions{})
+	var flyATransactions = models.Transactions.Load(models.FlypayATransactions{})
+	var flyBTransactions = models.Transactions.Load(models.FlypayBTransactions{})
 
 	var transactions []models.Transaction = append(flyATransactions.GetTrasncations(), flyBTransactions.GetTrasncations()...)
 

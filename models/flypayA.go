@@ -61,7 +61,7 @@ func (transcations FlypayATransactions) GetTrasncations() []Transaction {
 	return reuslt
 }
 
-func (transcations FlypayATransactions) Load() TransactionsObject {
+func (transcations FlypayATransactions) Load() Transactions {
 	// open flypayA json file
 	jsonFile, err := os.Open("./data/flypayA.json")
 
