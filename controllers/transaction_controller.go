@@ -6,11 +6,22 @@ import (
 	"net/http"
 )
 
-var allTransactions = data.LoadAllTransactions()
-
 var GetTransactions = func(c *gin.Context) {
-	// provider := c.Query("provider")
-	// statusCode := c.Query("statusCode")
+	// load all transactions
+	transactions := data.LoadAllTransactions()
+
+	// get transactions by provider
+	provider := c.Query("provider")
+	if provider != "" {
+		transactions = data.FindTransactionsByProvider(transactions, provider)
+	}
+
+	// get transactions by statusCode
+	statusCode := c.Query("statusCode")
+	if statusCode != "" {
+		transactions = data.FindTransactionsByStatusCode(transactions, statusCode)
+	}
+
 	// amountMin := c.Query("amountMin")
 	// amountMax := c.Query("amountMax")
 	// currency := c.Query("currency")
@@ -22,6 +33,6 @@ var GetTransactions = func(c *gin.Context) {
 	// fmt.Println(flyBTranscations.Transcations[0])
 
 	c.JSON(http.StatusOK, gin.H{
-		"result": allTransactions,
+		"result": transactions,
 	})
 }

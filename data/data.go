@@ -73,3 +73,29 @@ var LoadAllTransactions = func () []models.TransactionObject {
 
 	return transactions;
 }
+
+var FindTransactionsByProvider = func (transactions []models.TransactionObject, provider string) []models.TransactionObject {
+	transactionsByProvider := make([]models.TransactionObject, 0)
+	
+	// loop through all transactions and return only the ones with the sent provider
+	for _, transaction := range transactions {
+        if transaction.GetProvider() == provider {
+            transactionsByProvider = append(transactionsByProvider, transaction)
+        }
+	}
+	
+	return transactionsByProvider
+}
+
+var FindTransactionsByStatusCode = func (transactions []models.TransactionObject, statusCode string) []models.TransactionObject {
+	transactionsByStatusCode := make([]models.TransactionObject, 0)
+	
+	// loop through all transactions and return only the ones with the sent provider
+	for _, transaction := range transactions {
+        if transaction.GetStatus() == statusCode {
+            transactionsByStatusCode = append(transactionsByStatusCode, transaction)
+        }
+	}
+	
+	return transactionsByStatusCode
+}
