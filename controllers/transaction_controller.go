@@ -2,8 +2,10 @@ package controllers
 
 import (
 	"code-challange/data"
-	"github.com/gin-gonic/gin"
 	"net/http"
+	"strconv"
+
+	"github.com/gin-gonic/gin"
 )
 
 var GetTransactions = func(c *gin.Context) {
@@ -22,17 +24,26 @@ var GetTransactions = func(c *gin.Context) {
 		transactions = data.FindTransactionsByStatusCode(transactions, statusCode)
 	}
 
-	// amountMin := c.Query("amountMin")
-	// amountMax := c.Query("amountMax")
-	// currency := c.Query("currency")
+	// get transactions by amount
+	amountMin := c.Query("amountMin")
+	amountMax := c.Query("amountMax")
+	if amountMin != "" && amountMax != "" {
+		amountMin, _ := strconv.Atoi(amountMin)
+		amountMax, _ := strconv.Atoi(amountMax)
 
+		transactions = data.FindTransactionsByAmount(transactions, amountMin, amountMax)
+	}
+
+	// get transactions by currency
+	currency := c.Query("currency")
+	if currency != "" {
+		transactions = data.FindTransactionsByCurrency(transactions, currency)
+	}
 	// query := c.Request.URL.Query()
 	// fmt.Println(query)
 
-	// fmt.Println(flyATranscations.Transcations[0])
-	// fmt.Println(flyBTranscations.Transcations[0])
-
 	c.JSON(http.StatusOK, gin.H{
+		"status": "OK",
 		"result": transactions,
 	})
 }

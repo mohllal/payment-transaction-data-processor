@@ -90,7 +90,7 @@ var FindTransactionsByProvider = func (transactions []models.TransactionObject, 
 var FindTransactionsByStatusCode = func (transactions []models.TransactionObject, statusCode string) []models.TransactionObject {
 	transactionsByStatusCode := make([]models.TransactionObject, 0)
 	
-	// loop through all transactions and return only the ones with the sent provider
+	// loop through all transactions and return only the ones with the sent statusCode
 	for _, transaction := range transactions {
         if transaction.GetStatus() == statusCode {
             transactionsByStatusCode = append(transactionsByStatusCode, transaction)
@@ -98,4 +98,30 @@ var FindTransactionsByStatusCode = func (transactions []models.TransactionObject
 	}
 	
 	return transactionsByStatusCode
+}
+
+var FindTransactionsByAmount = func (transactions []models.TransactionObject, amountMin int, amountMax int) []models.TransactionObject {
+	transactionsByAmount := make([]models.TransactionObject, 0)
+	
+	// loop through all transactions and return only the ones between the sent amountMin and amountMax inclusively
+	for _, transaction := range transactions {
+        if transaction.GetAmount() >= amountMin && transaction.GetAmount() <= amountMax {
+            transactionsByAmount = append(transactionsByAmount, transaction)
+        }
+	}
+	
+	return transactionsByAmount
+}
+
+var FindTransactionsByCurrency = func (transactions []models.TransactionObject, currency string) []models.TransactionObject {
+	transactionsByCurrency := make([]models.TransactionObject, 0)
+	
+	// loop through all transactions and return only the ones with the sent currency
+	for _, transaction := range transactions {
+        if transaction.GetCurrency() == currency {
+            transactionsByCurrency = append(transactionsByCurrency, transaction)
+        }
+	}
+	
+	return transactionsByCurrency
 }
