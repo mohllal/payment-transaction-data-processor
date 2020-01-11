@@ -1,6 +1,6 @@
 package models
 
-type TransactionObject interface {
+type Transaction interface {
 	GetAmount() int
 	GetCurrency() string
 	GetStatus() string

@@ -1,10 +1,17 @@
 package models
 
+import (
+	"encoding/json"
+	"fmt"
+	"io/ioutil"
+	"os"
+)
+
 type FlypayATransactions struct {
-	Transactions []FlaypayATransaction `json:"transactions"`
+	Transactions []FlypayATransaction `json:"transactions"`
 }
 
-type FlaypayATransaction struct {
+type FlypayATransaction struct {
 	Amount         int    `json:"amount"`
 	Currency       string `json:"currency"`
 	StatusCode     int    `json:"statusCode"`
@@ -18,26 +25,60 @@ var FlypayAStatusCodeMapping = map[int]string{
 	3: "refunded",
 }
 
-func (transaction FlaypayATransaction) GetAmount() int {
+func (transaction FlypayATransaction) GetAmount() int {
 	return transaction.Amount
 }
 
-func (transaction FlaypayATransaction) GetCurrency() string {
+func (transaction FlypayATransaction) GetCurrency() string {
 	return transaction.Currency
 }
 
-func (transaction FlaypayATransaction) GetStatus() string {
+func (transaction FlypayATransaction) GetStatus() string {
 	return FlypayAStatusCodeMapping[transaction.StatusCode]
 }
 
-func (transaction FlaypayATransaction) GetOrder() string {
+func (transaction FlypayATransaction) GetOrder() string {
 	return transaction.OrderReference
 }
 
-func (transaction FlaypayATransaction) GetPayment() string {
+func (transaction FlypayATransaction) GetPayment() string {
 	return transaction.TransactionId
 }
 
-func (transcation FlaypayATransaction) GetProvider() string {
+func (transcation FlypayATransaction) GetProvider() string {
 	return "flypayA"
+}
+
+func (transcations FlypayATransactions) GetTrasncations() []Transaction {
+	reuslt := make([]Transaction, len(transcations.Transactions))
+
+	// loop through flyA transactions
+	// https://github.com/golang/go/wiki/InterfaceSlice
+	for i, transaction := range transcations.Transactions {
+		reuslt[i] = transaction
+	}
+
+	return reuslt
+}
+
+func (transcations FlypayATransactions) Load() TransactionsObject {
+	// open flypayA json file
+	jsonFile, err := os.Open("./data/flypayA.json")
+
+	// if os.Open returns an error then handle it
+	if err != nil {
+		fmt.Println(err)
+	}
+	fmt.Println("Successfully Opened flypayA.json")
+	// defer the closing operation
+	defer jsonFile.Close()
+
+	// read the json file as a byte array.
+	byteValue, _ := ioutil.ReadAll(jsonFile)
+
+	var flypayA FlypayATransactions
+	// unmarshal the byteArray which contains the json content
+	json.Unmarshal(byteValue, &flypayA)
+
+	return flypayA
 }
