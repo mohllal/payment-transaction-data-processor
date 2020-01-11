@@ -1,7 +1,7 @@
 package routers
 
 import (
-	"code-challange/controllers"
+	"github.com/Mohllal/go-challange/controllers"
 	"github.com/gin-gonic/gin"
 )
 

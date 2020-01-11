@@ -1,19 +1,19 @@
 package main
 
 import (
-	router "code-challange/routers"
+	router "github.com/Mohllal/go-challange/routers"
 
 	"github.com/gin-gonic/gin"
 )
 
-var SetupRouters = func() *gin.Engine {
+var SetupRouter = func() *gin.Engine {
 	r := gin.Default()
-	router.HomeRouter("api/", r)
+	router.PingRouter("api/", r)
 	router.TransactionRouter("api/payment/transaction", r)
 	return r
 }
 
 func main() {
-	r := SetupRouters()
+	r := SetupRouter()
 	r.Run(":5000")
 }

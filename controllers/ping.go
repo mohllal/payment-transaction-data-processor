@@ -5,7 +5,7 @@ import (
 	"net/http"
 )
 
-var GetHome = func(c *gin.Context) {
+var GetPong = func(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{
 		"message": "pong",
 	})

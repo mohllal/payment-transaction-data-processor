@@ -1,7 +1,7 @@
 package data
 
 import (
-	"code-challange/models"
+	"github.com/Mohllal/go-challange/models"
 )
 
 var LoadAllTransactions = func() []models.Transaction {

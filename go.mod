@@ -1,4 +1,4 @@
-module code-challange
+module github.com/Mohllal/go-challange
 
 go 1.13
 
