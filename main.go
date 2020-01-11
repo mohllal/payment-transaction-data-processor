@@ -9,7 +9,7 @@ import (
 var SetupRouter = func() *gin.Engine {
 	r := gin.Default()
 	router.PingRouter("api/", r)
-	router.TransactionRouter("api/payment/transaction", r)
+	router.TransactionRouter("api/payment/", r)
 	return r
 }
 

@@ -8,6 +8,6 @@ import (
 var TransactionRouter = func(baseUrl string, route *gin.Engine) {
 	transaction := route.Group(baseUrl)
 	{
-		transaction.GET("/", controllers.GetTransactions)
+		transaction.GET("/transaction", controllers.GetTransactions)
 	}
 }
