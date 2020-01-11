@@ -2,9 +2,8 @@ package controllers
 
 import (
 	"code-challange/data"
-	"net/http"
-
 	"github.com/gin-gonic/gin"
+	"net/http"
 )
 
 var allTranscations = data.LoadAllTranscations()

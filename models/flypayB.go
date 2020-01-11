@@ -18,6 +18,22 @@ var FlypayBStatusCodeMapping = map[int]string{
 	300: "refunded",
 }
 
-func (transcation FlaypayBTranscation) TranscationObject() {
-	// no-op marker method
+func (transcation FlaypayBTranscation) GetAmount() int {
+	return transcation.Value
+}
+
+func (transcation FlaypayBTranscation) GetCurrency() string {
+	return transcation.TransactionCurrency
+}
+
+func (transcation FlaypayBTranscation) GetStatus() string {
+	return FlypayBStatusCodeMapping[transcation.StatusCode]
+}
+
+func (transcation FlaypayBTranscation) GetOrder() string {
+	return transcation.OrderInfo
+}
+
+func (transcation FlaypayBTranscation) GetPayment() string {
+	return transcation.PaymentId
 }

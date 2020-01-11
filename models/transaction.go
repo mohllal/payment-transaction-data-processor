@@ -1,5 +1,9 @@
 package models
 
 type TranscationObject interface {
-	TranscationObject()
+	GetAmount() int
+	GetCurrency() string
+	GetStatus() string
+	GetOrder() string
+	GetPayment() string
 }

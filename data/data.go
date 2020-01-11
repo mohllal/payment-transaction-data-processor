@@ -59,15 +59,17 @@ var LoadAllTranscations = func () []models.TranscationObject {
 	// https://github.com/golang/go/wiki/InterfaceSlice
 	var transcations []models.TranscationObject = make([]models.TranscationObject, len(flyATranscations.Transcations)+len(flyBTranscations.Transcations))
 
-	// loop throug flyA transcations
+	// loop through flyA transcations
 	for i, transcation := range flyATranscations.Transcations {
 		transcations[i] = transcation
 	}
 
-	// loop throug flyB transcations
+	// loop through flyB transcations
 	for i, transcation := range flyBTranscations.Transcations {
 		transcations[i+len(flyATranscations.Transcations)] = transcation
 	}
+
+	// fmt.Println(transcations[0].GetStatus())
 
 	return transcations;
 }
