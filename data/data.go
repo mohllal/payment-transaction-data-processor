@@ -8,7 +8,7 @@ import (
 	"os"
 )
 
-var LoadFlyATranscations = func() models.FlypayATranscations {
+var LoadFlyATransactions = func() models.FlypayATransactions {
 	// open flypayA json file
 	jsonFile, err := os.Open("./data/flypayA.json")
 
@@ -23,14 +23,14 @@ var LoadFlyATranscations = func() models.FlypayATranscations {
 	// read the json file as a byte array.
 	byteValue, _ := ioutil.ReadAll(jsonFile)
 
-	var flypayA models.FlypayATranscations
+	var flypayA models.FlypayATransactions
 	// unmarshal the byteArray which contains the json content
 	json.Unmarshal(byteValue, &flypayA)
 
 	return flypayA
 }
 
-var LoadFlyBTranscations = func() models.FlypayBTranscations {
+var LoadFlyBTransactions = func() models.FlypayBTransactions {
 	// open flypayA json file
 	jsonFile, err := os.Open("./data/flypayB.json")
 
@@ -45,31 +45,31 @@ var LoadFlyBTranscations = func() models.FlypayBTranscations {
 	// read the json file as a byte array.
 	byteValue, _ := ioutil.ReadAll(jsonFile)
 
-	var flypayB models.FlypayBTranscations
+	var flypayB models.FlypayBTransactions
 	// unmarshal the byteArray which contains the json content
 	json.Unmarshal(byteValue, &flypayB)
 
 	return flypayB
 }
 
-var LoadAllTranscations = func () []models.TranscationObject {
-	var flyATranscations = LoadFlyATranscations()
-	var flyBTranscations = LoadFlyBTranscations()
+var LoadAllTransactions = func () []models.TransactionObject {
+	var flyATransactions = LoadFlyATransactions()
+	var flyBTransactions = LoadFlyBTransactions()
 
 	// https://github.com/golang/go/wiki/InterfaceSlice
-	var transcations []models.TranscationObject = make([]models.TranscationObject, len(flyATranscations.Transcations)+len(flyBTranscations.Transcations))
+	var transactions []models.TransactionObject = make([]models.TransactionObject, len(flyATransactions.Transactions)+len(flyBTransactions.Transactions))
 
-	// loop through flyA transcations
-	for i, transcation := range flyATranscations.Transcations {
-		transcations[i] = transcation
+	// loop through flyA transactions
+	for i, transaction := range flyATransactions.Transactions {
+		transactions[i] = transaction
 	}
 
-	// loop through flyB transcations
-	for i, transcation := range flyBTranscations.Transcations {
-		transcations[i+len(flyATranscations.Transcations)] = transcation
+	// loop through flyB transactions
+	for i, transaction := range flyBTransactions.Transactions {
+		transactions[i+len(flyATransactions.Transactions)] = transaction
 	}
 
-	// fmt.Println(transcations[0].GetStatus())
+	// fmt.Println(transactions[0].GetStatus())
 
-	return transcations;
+	return transactions;
 }

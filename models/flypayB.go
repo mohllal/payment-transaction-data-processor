@@ -1,10 +1,10 @@
 package models
 
-type FlypayBTranscations struct {
-	Transcations []FlaypayBTranscation `json:"transactions"`
+type FlypayBTransactions struct {
+	Transactions []FlaypayBTransaction `json:"transactions"`
 }
 
-type FlaypayBTranscation struct {
+type FlaypayBTransaction struct {
 	Value               int    `json:"value"`
 	TransactionCurrency string `json:"transactionCurrency"`
 	StatusCode          int    `json:"statusCode"`
@@ -18,22 +18,26 @@ var FlypayBStatusCodeMapping = map[int]string{
 	300: "refunded",
 }
 
-func (transcation FlaypayBTranscation) GetAmount() int {
-	return transcation.Value
+func (transaction FlaypayBTransaction) GetAmount() int {
+	return transaction.Value
 }
 
-func (transcation FlaypayBTranscation) GetCurrency() string {
-	return transcation.TransactionCurrency
+func (transaction FlaypayBTransaction) GetCurrency() string {
+	return transaction.TransactionCurrency
 }
 
-func (transcation FlaypayBTranscation) GetStatus() string {
-	return FlypayBStatusCodeMapping[transcation.StatusCode]
+func (transaction FlaypayBTransaction) GetStatus() string {
+	return FlypayBStatusCodeMapping[transaction.StatusCode]
 }
 
-func (transcation FlaypayBTranscation) GetOrder() string {
-	return transcation.OrderInfo
+func (transaction FlaypayBTransaction) GetOrder() string {
+	return transaction.OrderInfo
 }
 
-func (transcation FlaypayBTranscation) GetPayment() string {
-	return transcation.PaymentId
+func (transaction FlaypayBTransaction) GetPayment() string {
+	return transaction.PaymentId
+}
+
+func (transaction FlaypayBTransaction) GetProvider() string {
+	return "flypayB"
 }
