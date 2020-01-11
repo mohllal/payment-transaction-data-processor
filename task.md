@@ -12,11 +12,11 @@ Use these files as a source of data for the this task
 
 ```json
 {
-  amount:1000,
-  currency:'AUD',
-  statusCode:1,
-  orderReference:'2e58bd43-7abb'
-  transactionId: '4fc2-a8d1'
+  "amount": 1000,
+  "currency": "AUD",
+  "statusCode": 1,
+  "orderReference": "2e58bd43-7abb",
+  "transactionId": "4fc2-a8d1"
 }
 ```
 
@@ -30,11 +30,11 @@ We have three status for `flypayA`
 
 ```json
 {
-  value:200,
-  transactionCurrency:'AUD',
-  statusCode:100,
-  orderInfo:'2e58bd43-7abb'
-  paymentId: '4dc2-a8a1'
+  "value": 200,
+  "transactionCurrency": "AUD",
+  "statusCode": 100,
+  "orderInfo": "2e58bd43-7abb",
+  "paymentId": "4dc2-a8a1"
 }
 ```
 
