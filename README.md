@@ -43,5 +43,20 @@ Or you can run it through [Docker](https://www.docker.com/).
 
 ***NOTE***: A Postman Collection for the API endpoints can be found [here](https://www.getpostman.com/collections/3be97a194d06646a929e).
 
+## Code Scalabilty:
+
+How can we add a new payment provider like `flypayC` with a new schema?
+
+1. Add `flypayC.json` file to the [data](./data) directory.
+
+2. Add new Model for `flypayC.go` in the [models](./models) directory:
+    - `FlypayCTransactions` struct that implements the [`Transactions`](./models/transactions.go) interface.
+    - `FlypayCTransaction` struct that implements the [`Transaction`](./models/transaction.go) interface.
+    - `FlypayCStatusCodeMapping` map that maps the `statusCode` for the `flypayC.json` schema.
+
+3. In the [`data.go`](./data/data.go) file, add the following lines in the `LoadAllTransactions` function:
+    - `var flyCTransactions = models.Transactions.Load(models.FlypayCTransactions{})`
+    - Append `flyCTransactions` to the `transactions` slice as follows: `transactions.append(transactions, flyCTransactions...)`.
+
 ## License:
 This software is licensed under the [MIT License](https://opensource.org/licenses/MIT).
