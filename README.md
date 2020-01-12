@@ -64,5 +64,11 @@ How can we add a new payment provider like `flypayC` with a new schema?
     - `var flyCTransactions = models.Transactions.Load(models.FlypayCTransactions{})`
     - Append `flyCTransactions` to the `transactions` slice as follows: `transactions.append(transactions, flyCTransactions...)`.
 
+## Challanges (TO-DO):
+
+Using [`Decoder`](https://golang.org/pkg/encoding/json/#Decoder) to read a `JSON` file as input stream to reduce the huge spike in memory usage in reading large files.
+
+***Problem***: Reading `JSON` files with a non top-level array like [flypayA.json](./data/flypayA.json) and [flypayB.json](./data/flypayB.json).
+
 ## License:
 This software is licensed under the [MIT License](https://opensource.org/licenses/MIT).
