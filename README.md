@@ -41,6 +41,12 @@ Or you can run it through [Docker](https://www.docker.com/).
     go test -v
     ```
 
+6. Benchmarking can be run through:
+
+    ```bash
+    go test -bench=.
+    ```
+
 ***NOTE***: A Postman Collection for the API endpoints can be found [here](https://www.getpostman.com/collections/3be97a194d06646a929e).
 
 ## Code Scalabilty:
