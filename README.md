@@ -1,4 +1,4 @@
-# Go Challenge
+# Payment Transaction Data Processor
 
 A backend service code challenge using [Golang](https://golang.org/).
 
